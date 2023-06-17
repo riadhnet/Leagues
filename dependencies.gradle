@@ -1,0 +1,11 @@
+ext {
+    ktx_version = "1.10.1"
+    appcompat_version = "1.6.1"
+    material_version = "1.9.0"
+    junit_version = "4.13.2"
+    junit_test_version = "1.1.5"
+    expresso_core_version = "3.5.1"
+    viewmodel_version = "2.6.1"
+    activity_ktx_version = "1.7.2"
+    hilt_version = "2.44"
+}
