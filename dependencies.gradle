@@ -9,4 +9,5 @@ ext {
     activity_ktx_version = "1.7.2"
     hilt_version = "2.44"
     retrofit_version = "2.9.0"
+    okhttp_version = "4.11.0"
 }

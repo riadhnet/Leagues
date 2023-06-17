@@ -14,7 +14,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "BASE_URL", "\"https://www.thesportsdb.com/api/\""
+        buildConfigField "String", "BASE_URL", "\"https://www.thesportsdb.com/\""
         Properties properties = new Properties()
         properties.load(project.rootProject.file('local.properties').newDataInputStream())
         buildConfigField "String", "API_KEY", "\"${properties.getProperty('API_KEY')}\""
@@ -39,6 +39,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -58,6 +62,10 @@ dependencies {
     // Retrofit  dependencies
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // okhttp  dependencies
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
     // Testing dependencies
     testImplementation "junit:junit:$junit_version"
