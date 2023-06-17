@@ -18,10 +18,21 @@ class MainViewModel @Inject constructor() : ViewModel() {
         MutableLiveData<List<String>>()
     }
 
+    val teamsLiveDataList: MutableLiveData<List<String>> by lazy {
+        MutableLiveData<List<String>>()
+    }
+
     fun fetchLeaguesList() {
         viewModelScope.launch {
             val result = repository.getAllLeagues()
             leaguesLiveDataList.value = result?.map { it.strLeague.toString() }
+        }
+    }
+
+    fun fetchLeagueTeams(leagueName: String) {
+        viewModelScope.launch {
+            val result = repository.getLeagueTeams(leagueName)
+            teamsLiveDataList.value = result?.map { it.strTeamBadge.toString() }
         }
     }
 

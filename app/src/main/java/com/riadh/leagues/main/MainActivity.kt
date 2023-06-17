@@ -1,6 +1,8 @@
 package com.riadh.leagues.main
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -20,9 +22,9 @@ class MainActivity : AppCompatActivity() {
         initView()
         manageSearch()
         fetchData()
-
+        manageClick()
+        showTeamsList()
     }
-
 
     private fun initView() {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -41,6 +43,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun fetchData() {
         viewModel.fetchLeaguesList()
+    }
+
+    private fun manageClick() {
+        binding.searchBar.onItemClickListener =
+            AdapterView.OnItemClickListener { _, _, position, _ ->
+                val selectedItem = adapter.getItem(position)
+                selectedItem?.let {
+                    viewModel.fetchLeagueTeams(it)
+                }
+            }
+    }
+
+    private fun showTeamsList() {
+        viewModel.teamsLiveDataList.observe(this) { teamsList ->
+            Log.i("list", teamsList.size.toString())
+        }
     }
 
 

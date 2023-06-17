@@ -1,6 +1,7 @@
 package com.riadh.leagues.domain
 
 import com.riadh.leagues.model.League
+import com.riadh.leagues.model.Team
 
 interface LeaguesRepository {
 
@@ -12,6 +13,6 @@ interface LeaguesRepository {
     /**
      * get all teams from selected League
      */
-    suspend fun getLeagueTeams(leagueName: String)
+    suspend fun getLeagueTeams(leagueName: String): List<Team>?
 
 }
